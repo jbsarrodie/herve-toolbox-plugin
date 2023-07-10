@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Toolbox plugin for Archimate tool
+Bundle-SymbolicName: org.archicontribs.toolbox;singleton:=true
+Bundle-Version: 1.0.0.alpha
+Export-Package: org.archicontribs.toolbox
+Bundle-Activator: org.archicontribs.toolbox.Activator
+Bundle-ClassPath: .,
+ lib/lombok.jar
+Bundle-Vendor: Herve Jouin
+Require-Bundle: org.eclipse.swt,
+ org.eclipse.help,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ com.archimatetool.editor,
+ com.archimatetool.help,
+ com.archimatetool.model
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-ActivationPolicy: lazy

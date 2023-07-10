@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+   <extension
+      point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.archicontribs.toolbox.preferences.PreferencePage"
+            id="org.archicontribs.toolbox.preferences.PreferencePage"
+            name="toolbox plugin">
+      </page>
+   </extension>
+ </plugin>
