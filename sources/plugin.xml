@@ -2,12 +2,40 @@
 <?eclipse version="3.4"?>
 
 <plugin>
-   <extension
-      point="org.eclipse.ui.preferencePages">
-      <page
-            class="org.archicontribs.toolbox.preferences.PreferencePage"
-            id="org.archicontribs.toolbox.preferences.PreferencePage"
-            name="toolbox plugin">
-      </page>
-   </extension>
+	<extension
+		point="org.eclipse.ui.preferencePages">
+		<page
+			class="org.archicontribs.toolbox.ToolboxPreferencePage"
+			id="org.archicontribs.toolbox.PreferencePage"
+			name="toolbox plugin">
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.menus">
+		<menuContribution
+			allPopups="true"
+			class="org.archicontribs.toolbox.ToolboxMenu"
+			locationURI="popup:com.archimatetool.editor.treeModelView?after=additions">
+		</menuContribution>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			categoryId="org.eclipse.ui.category.edit"
+			description="Delete selected objects from the model"
+			id="com.archimatetool.editor.action.deleteFromModel"
+			name="Toolbox Delete from Model">
+		</command>
+	</extension>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="org.archicontribs.toolbox.ToolboxArchimateDiagramEditor"
+			contributorClass="com.archimatetool.editor.diagram.ArchimateDiagramEditorActionBarContributor"
+			default="false"
+			icon="img/diagram.png"
+			id="com.archimatetool.editor.diagramEditor"
+			name="View">
+      </editor>
+	</extension>
  </plugin>
