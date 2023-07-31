@@ -4,7 +4,6 @@ Bundle-Name: Toolbox plugin for Archimate tool
 Bundle-SymbolicName: org.archicontribs.toolbox;singleton:=true
 Bundle-Version: 1.0.0.alpha
 Export-Package: org.archicontribs.toolbox
-Bundle-Activator: org.archicontribs.toolbox.ToolboxActivator
 Bundle-ClassPath: .,
  lib/lombok.jar,
  lib/javassist.jar

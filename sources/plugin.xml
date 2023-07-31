@@ -10,32 +10,36 @@
 			name="toolbox plugin">
 		</page>
 	</extension>
-	<extension
-		point="org.eclipse.ui.menus">
-		<menuContribution
-			allPopups="true"
-			class="org.archicontribs.toolbox.ToolboxMenu"
-			locationURI="popup:com.archimatetool.editor.treeModelView?after=additions">
-		</menuContribution>
-	</extension>
-	<extension
-		point="org.eclipse.ui.commands">
-		<command
-			categoryId="org.eclipse.ui.category.edit"
-			description="Delete selected objects from the model"
-			id="com.archimatetool.editor.action.deleteFromModel"
-			name="Toolbox Delete from Model">
-		</command>
-	</extension>
+	
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="org.archicontribs.toolbox.ToolboxArchimateDiagramEditor"
+			class="org.archicontribs.toolbox.override.ToolboxArchimateDiagramEditor"
 			contributorClass="com.archimatetool.editor.diagram.ArchimateDiagramEditorActionBarContributor"
 			default="false"
 			icon="img/diagram.png"
 			id="com.archimatetool.editor.diagramEditor"
 			name="View">
       </editor>
+	</extension>
+	
+	<extension
+		point="org.eclipse.ui.views">
+		<view
+			class="org.archicontribs.toolbox.override.ToolboxTreeModelView"
+			icon="img/models.png"
+			id="com.archimatetool.editor.treeModelView"
+			name="Models"
+			restorable="true">
+		</view>
+	</extension>
+	
+	<extension
+		name="ArchiMate Elements"
+		point="com.archimatetool.editor.objectUIProvider">
+		<uiProvider
+			class="org.archicontribs.toolbox.uiProvider.elements.ToolboxTechnologyServiceUIProvider"
+			id="com.archimatetool.editor.TechnologyServiceUIProvider">
+		</uiProvider>
 	</extension>
  </plugin>
