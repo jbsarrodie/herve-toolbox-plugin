@@ -7,6 +7,8 @@ import org.eclipse.gef.ui.actions.UpdateAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.actions.ActionFactory;
 
+import com.archimatetool.editor.diagram.actions.DeleteFromModelAction;
+
 public class ToolboxArchimateDiagramEditor extends com.archimatetool.editor.diagram.ArchimateDiagramEditor {
 	
     /**
@@ -21,24 +23,19 @@ public class ToolboxArchimateDiagramEditor extends com.archimatetool.editor.diag
     	ActionRegistry registry = getActionRegistry();
         IAction action;
     	
-    	// we remove the former DeleteFromModelAction action
-        // -------------------------------------------------
-        action = registry.getAction(ActionFactory.DELETE.getId());
+    	// we remove the former DeleteFromModelAction action that is set in ArchimateDiagramEditor
+        // ---------------------------------------------------------------------------------------
+        action = new DeleteFromModelAction(this);
         registry.removeAction(action);
         getSelectionActions().remove(action.getId());
-        getUpdateCommandStackActions().remove((UpdateAction)action);
         
         	// and add our ToolboxDeleteFromModelAction action instead
         action = new ToolboxDeleteFromModelAction(this);
-        action.setId(ActionFactory.DELETE.getId());
-        action.setText("&Delete from view");
-        action.setToolTipText(action.getText());
         registry.registerAction(action);
         getSelectionActions().add(action.getId());
-        getUpdateCommandStackActions().add((UpdateAction)action);
         
-        // we remove the former RenameFromModelAction action
-        // -------------------------------------------------
+        // we remove the former RenameFromModelAction action that is set from AbstractDiagramEditor
+        // ----------------------------------------------------------------------------------------
         action = registry.getAction(ActionFactory.RENAME.getId());
         registry.removeAction(action);
         getSelectionActions().remove(action.getId());
