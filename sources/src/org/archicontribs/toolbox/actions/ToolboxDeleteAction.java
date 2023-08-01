@@ -4,6 +4,7 @@ import org.archicontribs.toolbox.Tools;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import com.archimatetool.editor.views.tree.TreeModelViewer;
+import com.archimatetool.editor.views.tree.commands.DeleteCommandHandler;
 import com.archimatetool.model.IArchimateConcept;
 import com.archimatetool.model.IDiagramModel;
 import com.archimatetool.model.IFolder;
@@ -46,5 +47,20 @@ public class ToolboxDeleteAction extends com.archimatetool.editor.views.tree.act
         }
         
         super.run();
+    }
+    
+    @Override
+    public void update() {
+    	boolean atLeastOneElementCanBeDeleted = false;
+        for(Object element : getSelection().toList()) {
+            if(DeleteCommandHandler.canDelete(element)) { // At least one element can be deleted
+            	if ( Tools.isProtected(element) ) {
+            		atLeastOneElementCanBeDeleted = false;
+            		break;
+            	} else
+            		atLeastOneElementCanBeDeleted = true;
+            }
+        }
+        setEnabled(atLeastOneElementCanBeDeleted);
     }
 }

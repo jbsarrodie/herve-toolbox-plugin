@@ -8,6 +8,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.archimatetool.model.IArchimateElement;
 import com.archimatetool.model.IArchimateRelationship;
+import com.archimatetool.model.IDiagramModelArchimateComponent;
 import com.archimatetool.model.IDiagramModelArchimateConnection;
 import com.archimatetool.model.IDiagramModelArchimateObject;
 import com.archimatetool.model.util.ArchimateModelUtils;
@@ -60,4 +61,28 @@ public class ToolboxDeleteFromModelAction extends com.archimatetool.editor.diagr
         
         super.run();
 	}
+	
+    @Override
+    protected boolean calculateEnabled() {
+        List<?> list = getSelectedObjects();
+        
+        if(list.isEmpty()) {
+            return false;
+        }
+        
+        boolean atLeastOneArchimateComponent = false;
+        
+        for(Object object : list) {
+            if(object instanceof EditPart) {
+                Object model = ((EditPart)object).getModel();
+                if(model instanceof IDiagramModelArchimateComponent) {
+                	if ( Tools.isProtected(model) )
+                		return false;
+                	atLeastOneArchimateComponent = true;
+                }
+            }
+        }
+        
+        return atLeastOneArchimateComponent;
+    }
 }
