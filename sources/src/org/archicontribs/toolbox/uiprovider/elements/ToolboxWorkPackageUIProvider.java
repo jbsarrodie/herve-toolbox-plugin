@@ -4,6 +4,7 @@ import org.archicontribs.toolbox.uiprovider.ToolboxArchimateElementEditPart;
 import org.eclipse.gef.EditPart;
 
 import com.archimatetool.editor.diagram.figures.elements.WorkPackageFigure;
+import com.archimatetool.editor.ui.factory.elements.WorkPackageUIProvider;
 
 public class ToolboxWorkPackageUIProvider extends com.archimatetool.editor.ui.factory.elements.WorkPackageUIProvider {
 	@Override

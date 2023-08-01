@@ -4,6 +4,7 @@ import org.archicontribs.toolbox.uiprovider.ToolboxArchimateElementEditPart;
 import org.eclipse.gef.EditPart;
 
 import com.archimatetool.editor.diagram.figures.elements.EventFigure;
+import com.archimatetool.editor.ui.factory.elements.TechnologyEventUIProvider;
 
 public class ToolboxTechnologyEventUIProvider extends com.archimatetool.editor.ui.factory.elements.TechnologyEventUIProvider {
 	@Override
