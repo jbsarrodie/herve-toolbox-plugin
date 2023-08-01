@@ -4,7 +4,7 @@ import org.archicontribs.toolbox.uiprovider.ToolboxArchimateElementEditPart;
 import org.eclipse.gef.EditPart;
 import com.archimatetool.editor.diagram.figures.elements.ServiceFigure;
 
-public class ToolboxTechnologyServiceUIProvider extends com.archimatetool.editor.ui.factory.elements.TechnologyServiceUIProvider {
+public class ToolboxApplicationServiceUIProvider extends com.archimatetool.editor.ui.factory.elements.ApplicationServiceUIProvider {
 	@Override
 	public EditPart createEditPart() {
 	    return new ToolboxArchimateElementEditPart(ServiceFigure.class);

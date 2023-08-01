@@ -1,16 +1,11 @@
 package org.archicontribs.toolbox.override;
 
 import org.archicontribs.toolbox.actions.ToolboxDeleteFromModelAction;
-import org.archicontribs.toolbox.actions.ToolboxRenameAction;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.actions.UpdateAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.actions.ActionFactory;
-
-import com.archimatetool.editor.diagram.Messages;
-import com.archimatetool.editor.diagram.actions.DeleteFromModelAction;
-import com.archimatetool.editor.views.tree.actions.RenameAction;
 
 public class ToolboxArchimateDiagramEditor extends com.archimatetool.editor.diagram.ArchimateDiagramEditor {
 	
