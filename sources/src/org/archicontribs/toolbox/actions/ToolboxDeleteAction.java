@@ -1,6 +1,6 @@
 package org.archicontribs.toolbox.actions;
 
-import org.archicontribs.toolbox.Tools;
+import org.archicontribs.toolbox.ToolboxPlugin;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import com.archimatetool.editor.views.tree.TreeModelViewer;
@@ -29,20 +29,20 @@ public class ToolboxDeleteAction extends com.archimatetool.editor.views.tree.act
         for(Object object : selection.toArray()) {
         	if(object instanceof IFolder folder) {
                 for(EObject element : folder.getElements())
-                    if ( Tools.isProtected(element, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                    if ( ToolboxPlugin.isProtected(element, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                     	return;
 
                 for(IFolder f : ((IFolder)object).getFolders())
-                	if ( Tools.isProtected(f, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                	if ( ToolboxPlugin.isProtected(f, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                     	return;
             }
             
             // Concept
-            if( (object instanceof IArchimateConcept concept) && Tools.isProtected(concept, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+            if( (object instanceof IArchimateConcept concept) && ToolboxPlugin.isProtected(concept, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                 return;
             
             // Diagram Model Reference
-            if( (object instanceof IDiagramModel diagramModel) && Tools.isProtected(diagramModel, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+            if( (object instanceof IDiagramModel diagramModel) && ToolboxPlugin.isProtected(diagramModel, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                 return;
         }
         
@@ -54,7 +54,7 @@ public class ToolboxDeleteAction extends com.archimatetool.editor.views.tree.act
     	boolean atLeastOneElementCanBeDeleted = false;
         for(Object element : getSelection().toList()) {
             if(DeleteCommandHandler.canDelete(element)) { // At least one element can be deleted
-            	if ( Tools.isProtected(element) ) {
+            	if ( ToolboxPlugin.isProtected(element) ) {
             		atLeastOneElementCanBeDeleted = false;
             		break;
             	} else

@@ -331,4 +331,18 @@
 			id="com.archimatetool.editor.TriggeringRelationshipUIProvider">
 		</uiProvider>
 	</extension>
+	
+	<extension
+		id="main"
+		point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections
+			contributorId="com.archimatetool.editor">
+			<propertySection
+				class="org.archicontribs.toolbox.override.ToolboxSpecializationSection"
+				filter="org.archicontribs.toolbox.override.ToolboxSpecializationSection$Filter"
+				id="specializationSection"
+				tab="main.tab">
+			</propertySection>
+		</propertySections>
+	</extension>
  </plugin>

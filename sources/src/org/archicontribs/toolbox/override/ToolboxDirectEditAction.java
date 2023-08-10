@@ -1,6 +1,6 @@
 package org.archicontribs.toolbox.override;
 
-import org.archicontribs.toolbox.Tools;
+import org.archicontribs.toolbox.ToolboxPlugin;
 import org.eclipse.gef.EditPart;
 import org.eclipse.ui.IEditorPart;
 
@@ -15,7 +15,7 @@ public class ToolboxDirectEditAction extends org.eclipse.gef.ui.actions.DirectEd
     protected boolean calculateEnabled() {
     	if ( (getSelectedObjects().size() == 1) && (getSelectedObjects().get(0) instanceof EditPart editPart) && editPart.understandsRequest(getDirectEditRequest()) ) {
     		// we should not popup a message as it will conflict with contextual menu 
-        	if ( Tools.isProtected(editPart) )
+        	if ( ToolboxPlugin.isProtected(editPart) )
             	return false;
             return true;
         }

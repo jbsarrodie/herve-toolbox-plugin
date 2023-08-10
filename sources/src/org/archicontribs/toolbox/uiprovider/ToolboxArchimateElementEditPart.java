@@ -5,7 +5,7 @@
  */
 package org.archicontribs.toolbox.uiprovider;
 
-import org.archicontribs.toolbox.Tools;
+import org.archicontribs.toolbox.ToolboxPlugin;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.requests.LocationRequest;
@@ -32,7 +32,7 @@ public class ToolboxArchimateElementEditPart extends com.archimatetool.editor.di
             if(request instanceof LocationRequest) {
                 // Edit the text control if we clicked on it
                 if(getFigure().didClickTextControl(((LocationRequest)request).getLocation().getCopy())) {
-                    if ( !Tools.isProtected(getFigure().getDiagramModelObject()) )
+                    if ( !ToolboxPlugin.isProtected(getFigure().getDiagramModelObject()) )
                     	createDirectEditManager().show();
                 }
                 // Else open Properties View on double-click

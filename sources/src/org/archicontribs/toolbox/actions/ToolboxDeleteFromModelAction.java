@@ -2,7 +2,7 @@ package org.archicontribs.toolbox.actions;
 
 import java.util.List;
 
-import org.archicontribs.toolbox.Tools;
+import org.archicontribs.toolbox.ToolboxPlugin;
 import org.eclipse.gef.EditPart;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -31,28 +31,28 @@ public class ToolboxDeleteFromModelAction extends com.archimatetool.editor.diagr
                 
                 if(model instanceof IDiagramModelArchimateObject obj) {
                     IArchimateElement element = obj.getArchimateElement();
-                    if ( Tools.isProtected(element, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                    if ( ToolboxPlugin.isProtected(element, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                     	return;
                     
                     // Element's relationships
                     for(IArchimateRelationship relationship : ArchimateModelUtils.getAllRelationshipsForConcept(element)) {
-                    	if ( Tools.isProtected(relationship, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                    	if ( ToolboxPlugin.isProtected(relationship, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                     		return;
                         // Relation's relationships
                         for(IArchimateRelationship r : ArchimateModelUtils.getAllRelationshipsForConcept(relationship)) {
-                        	if ( Tools.isProtected(r, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                        	if ( ToolboxPlugin.isProtected(r, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                         		return;
                         }
                     }
                 }
                 else if(model instanceof IDiagramModelArchimateConnection con) {
                     IArchimateRelationship relationship = con.getArchimateRelationship();
-                    if ( Tools.isProtected(relationship, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                    if ( ToolboxPlugin.isProtected(relationship, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                 		return;
                     
                     // Relation's relationships
                     for(IArchimateRelationship r : ArchimateModelUtils.getAllRelationshipsForConcept(relationship)) {
-                    	if ( Tools.isProtected(r, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
+                    	if ( ToolboxPlugin.isProtected(r, "Delete", "Cannot delete as one or more archimate concepts are protected.") )
                     		return;
                     }
                 }
@@ -76,7 +76,7 @@ public class ToolboxDeleteFromModelAction extends com.archimatetool.editor.diagr
             if(object instanceof EditPart) {
                 Object model = ((EditPart)object).getModel();
                 if(model instanceof IDiagramModelArchimateComponent) {
-                	if ( Tools.isProtected(model) )
+                	if ( ToolboxPlugin.isProtected(model) )
                 		return false;
                 	atLeastOneArchimateComponent = true;
                 }

@@ -1,6 +1,6 @@
 package org.archicontribs.toolbox.actions;
 
-import org.archicontribs.toolbox.Tools;
+import org.archicontribs.toolbox.ToolboxPlugin;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import com.archimatetool.editor.views.tree.TreeModelViewer;
@@ -33,20 +33,20 @@ public class ToolboxRenameAction extends com.archimatetool.editor.views.tree.act
         for(Object object : selection.toArray()) {
         	if(object instanceof IFolder folder) {
                 for(EObject element : folder.getElements())
-                    if ( Tools.isProtected(element, ToolboxRenameAction.title, message) )
+                    if ( ToolboxPlugin.isProtected(element, ToolboxRenameAction.title, message) )
                     	return;
 
                 for(IFolder f : ((IFolder)object).getFolders())
-                	if ( Tools.isProtected(f, ToolboxRenameAction.title, message) )
+                	if ( ToolboxPlugin.isProtected(f, ToolboxRenameAction.title, message) )
                     	return;
             }
             
             // Concept
-            if( (object instanceof IArchimateConcept concept) && Tools.isProtected(concept, ToolboxRenameAction.title, message) )
+            if( (object instanceof IArchimateConcept concept) && ToolboxPlugin.isProtected(concept, ToolboxRenameAction.title, message) )
                 return;
             
             // Diagram Model Reference
-            if( (object instanceof IDiagramModel diagramModel) && Tools.isProtected(diagramModel, ToolboxRenameAction.title, message) )
+            if( (object instanceof IDiagramModel diagramModel) && ToolboxPlugin.isProtected(diagramModel, ToolboxRenameAction.title, message) )
                 	return;
         }
         
